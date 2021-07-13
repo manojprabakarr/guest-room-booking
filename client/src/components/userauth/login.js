@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Button,
   Form,
@@ -8,8 +8,19 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../context/authcontext/authContext";
 
-function Login() {
+function Login(props) {
+  const { login, isAuthenticated, error, clearErrors } =
+    useContext(AuthContext);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push("/");
+    }
+    // eslint-disable-next-line
+  }, [isAuthenticated, props.history]);
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -20,6 +31,14 @@ function Login() {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const onsubmit = (e) => {
+    e.preventDefault();
+    login({
+      email,
+      password,
     });
   };
   return (
@@ -41,7 +60,7 @@ function Login() {
           >
             Guestroom-Login
           </Header>
-          <Form size="large">
+          <Form size="large" onSubmit={onsubmit}>
             <Segment>
               <Form.Input
                 placeholder="email"

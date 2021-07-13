@@ -8,6 +8,8 @@ import Userdashboard from "./components/dashboard/userdashboard";
 import AuthState from "./context/authcontext/authState";
 import AuthToken from "./utils/authtoken";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import Navbar from "./components/layout/Navbar";
+import "./App.css";
 
 if (localStorage.token) {
   AuthToken(localStorage.token);
@@ -18,6 +20,7 @@ function App() {
       <AuthState>
         <Router>
           <div>
+            <Navbar />
             <Switch>
               <PrivateRoute exact path="/" component={Userdashboard} />
 

@@ -96,6 +96,7 @@ const AuthState = (props) => {
       });
     }
   };
+
   const setError = (err) => {
     dispatch({
       type: REGISTER_FAIL,
