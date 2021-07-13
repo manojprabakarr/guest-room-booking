@@ -1,6 +1,7 @@
 import React, { useContext, Fragment } from "react";
-import { Menu, Segment, Header } from "semantic-ui-react";
+import { Menu, Segment } from "semantic-ui-react";
 import AuthContext from "../../context/authcontext/authContext";
+import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -22,6 +23,16 @@ function Navbar() {
     </Fragment>
   );
 
+  const sellerLinks = (
+    <Fragment>
+      <Menu.Item
+        name={SellerAuthContext.seller && SellerAuthContext.seller.name}
+      />
+
+      <Menu.Item onClick={() => SellerAuthContext.logout()} name="logout" />
+    </Fragment>
+  );
+
   const guestLinks = (
     <Fragment>
       <div
@@ -34,7 +45,9 @@ function Navbar() {
           <Menu.Item name="register" />
         </Link>
 
-        <Menu.Item name="hostyourhome" />
+        <Link to="/authregister">
+          <Menu.Item name="hostyourhome" />
+        </Link>
       </div>
     </Fragment>
   );
@@ -52,7 +65,11 @@ function Navbar() {
             name="Guestroom-application"
           />
 
-          {isAuthenticated ? authLinks : guestLinks}
+          {isAuthenticated
+            ? authLinks
+            : SellerAuthContext.isAuthenticated
+            ? sellerLinks
+            : guestLinks}
         </Menu>
       </Segment>
     </div>

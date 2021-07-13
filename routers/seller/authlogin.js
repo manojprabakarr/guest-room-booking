@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Userrent = require("../../models/userrent");
+const userrents = require("../../models/userrent");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
@@ -19,7 +19,7 @@ router.post(
     const { email, password } = req.body;
 
     try {
-      let user = await Userrent.findOne({ email });
+      let user = await userrents.findOne({ email });
 
       if (!user) {
         return res.status(400).json({ msg: "invalid  data" });
@@ -57,7 +57,7 @@ router.post(
 
 router.get("/", auth, async (req, res) => {
   try {
-    const user = await Userrent.findById(req.user.id).select("-password");
+    const user = await userrents.findById(req.user.id).select("-password");
     res.json(user);
   } catch (error) {
     console.log(error.message);

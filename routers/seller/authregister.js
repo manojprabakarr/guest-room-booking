@@ -2,7 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
-const Userrent = require("../../models/userrent");
+const userrents = require("../../models/userrent");
 
 router.post(
   "/",
@@ -22,10 +22,10 @@ router.post(
     const { name, email, password, phno } = req.body;
 
     try {
-      let user = await Userrent.findOne({ email });
+      let user = await userrents.findOne({ email });
       if (user) return res.status(400).send({ msg: "user already exists" });
 
-      user = new Userrent({
+      user = new userrents({
         name,
         email,
         phno,
