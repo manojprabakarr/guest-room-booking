@@ -17,3 +17,13 @@ export const SELLER_LOGOUT = "SELLER_LOGOUT";
 export const SELLER_USER_LOADED = "SELLER_USER_LOADED";
 export const SELLER_AUTH_ERROR = "SELLER_AUTH_ERROR";
 export const SELLER_CLEAR_ERRORS = "SELLER_CLEAR_ERRORS";
+
+//guest
+export const ADD_GUEST = "ADD_GUEST";
+export const EDIT_GUEST = "EDIT_GUEST";
+export const CLEAR_EDIT = "CLEAR_EDIT";
+export const UPDATE_GUEST = "UPDATE_GUEST";
+export const GET_GUESTS = "GET_GUESTS";
+export const GUESTS_ERROR = "GUESTS_ERROR";
+export const CLEAR_GUESTS = "CLEAR_GUESTS";
+export const REMOVE_GUEST = "REMOVE_GUEST";

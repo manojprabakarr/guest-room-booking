@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 //load routes
-app.use("/rentpost", require("./routers/seller/Rentrouter"));
+app.use("/guestpost", require("./routers/seller/Rentrouter"));
 app.use("/userregister", require("./routers/user/register"));
 app.use("/userlogin", require("./routers/user/login"));
 app.use("/authregister", require("./routers/seller/authregister"));

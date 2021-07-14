@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import Sellerform from "./Sellerform";
 import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
 
 function Sellerdashboard() {
@@ -8,8 +9,8 @@ function Sellerdashboard() {
   }, []);
 
   return (
-    <div>
-      <h1>hello</h1>
+    <div className="seller">
+      <Sellerform />
     </div>
   );
 }

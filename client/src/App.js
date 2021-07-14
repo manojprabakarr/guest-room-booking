@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //context provider
 import AuthState from "./context/authcontext/authState";
 import SellerAuthState from "./context/sellerauthcontext/sellerauthState";
+import GuestState from "./context/guestcontext/guestState";
 import AuthToken from "./utils/authtoken";
 import Login from "./components/userauth/login";
 import Register from "./components/userauth/register";
@@ -27,28 +28,30 @@ function App() {
     <div className="App">
       <AuthState>
         <SellerAuthState>
-          <Router>
-            <div>
-              <Navbar />
-              <Switch>
-                <PrivateRoute exact path="/" component={Userdashboard} />
+          <GuestState>
+            <Router>
+              <div>
+                <Navbar />
+                <Switch>
+                  <PrivateRoute exact path="/" component={Userdashboard} />
 
-                <PublicRoute
-                  exact
-                  path="/hosthome"
-                  component={Sellerdashboard}
-                />
+                  <PublicRoute
+                    exact
+                    path="/hosthome"
+                    component={Sellerdashboard}
+                  />
 
-                <Route exact path="/login" component={Login} />
+                  <Route exact path="/login" component={Login} />
 
-                <Route exact path="/register" component={Register} />
+                  <Route exact path="/register" component={Register} />
 
-                <Route exact path="/authlogin" component={Authlogin} />
+                  <Route exact path="/authlogin" component={Authlogin} />
 
-                <Route exact path="/authregister" component={Authregister} />
-              </Switch>
-            </div>
-          </Router>
+                  <Route exact path="/authregister" component={Authregister} />
+                </Switch>
+              </div>
+            </Router>
+          </GuestState>
         </SellerAuthState>
       </AuthState>
     </div>
