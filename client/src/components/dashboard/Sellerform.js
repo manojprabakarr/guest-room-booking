@@ -58,8 +58,7 @@ function Sellerform() {
     <div className="form">
       <Grid
         textAlign="center"
-        style={{ height: "100vh" }}
-        verticalAlign="middle"
+        style={{ height: "100vh", width: "500px", minWidth: "100px" }}
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <h1>{editGuest !== null ? "Edit Guest" : "Add guest"}</h1>
@@ -96,6 +95,7 @@ function Sellerform() {
               <Form.Input
                 type="text"
                 name="postimage"
+                placeholder="image url"
                 value={postimage}
                 onChange={onchange}
                 //accept=".png, .jpg, .jpeg"

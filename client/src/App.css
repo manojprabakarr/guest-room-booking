@@ -63,3 +63,14 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.seller {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 80px;
+}
+
+.list {
+  border: 1px solid #ccc;
+  padding: 40px;
+}

@@ -11,8 +11,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../context/authcontext/authContext";
 
 function Login(props) {
-  const { login, isAuthenticated, error, clearErrors } =
-    useContext(AuthContext);
+  const { login, isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -21,12 +20,10 @@ function Login(props) {
     // eslint-disable-next-line
   }, [isAuthenticated, props.history]);
 
-  const intialstate = {
+  const [user, setUser] = useState({
     email: "",
     password: "",
-  };
-
-  const [user, setUser] = useState(intialstate);
+  });
   const { email, password } = user;
 
   const onchange = (e) => {
@@ -39,14 +36,13 @@ function Login(props) {
   const onsubmit = (e) => {
     e.preventDefault();
     if (!(email || password)) {
-      alert("all feilds required");
-      return;
+      alert("all fileds required");
     }
+
     login({
       email,
       password,
     });
-    setUser(intialstate);
   };
   return (
     <div className="login">

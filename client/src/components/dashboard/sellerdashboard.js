@@ -5,6 +5,7 @@ import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext
 
 function Sellerdashboard() {
   const { loadUser } = useContext(SellerAuthContext);
+
   useEffect(() => {
     loadUser();
   }, []);
