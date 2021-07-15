@@ -11,15 +11,15 @@ import { Link } from "react-router-dom";
 import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
 
 function Authlogin(props) {
-  const { login, error, isAuthenticated, clearErrors, setError } =
+  const { login, error, isAuthencated, clearErrors, setError } =
     useContext(SellerAuthContext);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthencated) {
       props.history.push("/hosthome");
     }
     // eslint-disable-next-line
-  }, [isAuthenticated, props.history]);
+  }, [isAuthencated, props.history]);
 
   const [userdata, setuserdata] = useState({
     name: "",
@@ -37,6 +37,7 @@ function Authlogin(props) {
 
   const onsubmit = (e) => {
     e.preventDefault();
+
     login({
       email,
       password,

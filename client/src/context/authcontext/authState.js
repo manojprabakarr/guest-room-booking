@@ -5,12 +5,12 @@ import AuthContext from "../authcontext/authContext";
 import setAuthToken from "../../utils/authtoken";
 import {
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
   LOGIN_SUCCESS,
-  LOGIN_FAIL,
   USER_LOADED,
-  AUTH_ERROR,
   LOGOUT,
+  REGISTER_FAIL,
+  LOGIN_FAIL,
+  AUTH_ERROR,
   CLEAR_ERRORS,
 } from "../types";
 
@@ -62,7 +62,6 @@ const AuthState = (props) => {
       });
       loadUser();
     } catch (err) {
-      console.log(err);
       dispatch({
         type: REGISTER_FAIL,
         payload: err.response,
@@ -103,11 +102,11 @@ const AuthState = (props) => {
       payload: [{ msg: err }],
     });
   };
-  // Logout
+
   const logout = () => dispatch({ type: LOGOUT });
 
-  // Clear Errors
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
+
   return (
     <AuthContext.Provider
       value={{

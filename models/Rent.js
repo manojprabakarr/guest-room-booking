@@ -21,8 +21,10 @@ const rentschema = mongoose.Schema({
   postimage: {
     type: "String",
     required: true,
-    //data: Buffer,
-    // contentType: String,
+  },
+  maximum_stay: {
+    type: "String",
+    required: true,
   },
 
   posteddate: {

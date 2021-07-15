@@ -20,13 +20,15 @@ const Register = (props) => {
     }
   }, [isAuthenticated, props.history]);
 
-  const [user, setuser] = useState({
+  const refresh = {
     name: "",
     email: "",
     password: "",
     phno: "",
     password1: "",
-  });
+  };
+
+  const [user, setuser] = useState(refresh);
 
   const { name, email, password, phno, password1 } = user;
 
@@ -46,6 +48,7 @@ const Register = (props) => {
         password,
       });
     }
+    setuser(refresh);
   };
 
   return (

@@ -3,14 +3,15 @@ import { Route, Redirect } from "react-router-dom";
 import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  const authContext = useContext(SellerAuthContext);
-  const { isAuthenticated, loading } = authContext;
+  const sellerauthContext = useContext(SellerAuthContext);
+  const { isAuthencated, loading } = sellerauthContext;
+  //console.log(isAuthenticated);
   return (
     <Route
       {...rest}
       render={(props) =>
-        !isAuthenticated && !loading ? (
-          <Redirect to="/login" />
+        !isAuthencated && !loading ? (
+          <Redirect to="/authlogin" />
         ) : (
           <Component {...props} />
         )

@@ -1,12 +1,12 @@
 import {
-  REGISTER_FAIL,
   REGISTER_SUCCESS,
-  LOGIN_FAIL,
   LOGIN_SUCCESS,
   LOGOUT,
   USER_LOADED,
   AUTH_ERROR,
   CLEAR_ERRORS,
+  LOGIN_FAIL,
+  REGISTER_FAIL,
 } from "../types";
 
 export default (state, { type, payload }) => {
@@ -29,6 +29,7 @@ export default (state, { type, payload }) => {
         loading: false,
         error: null,
       };
+
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case AUTH_ERROR:
@@ -47,6 +48,7 @@ export default (state, { type, payload }) => {
         ...state,
         error: null,
       };
+
     default:
       return state;
   }

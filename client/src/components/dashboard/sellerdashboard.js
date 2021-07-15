@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import Sellerform from "./Sellerform";
+import Sellerlist from "./Sellerlist";
 import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
 
 function Sellerdashboard() {
@@ -11,6 +12,9 @@ function Sellerdashboard() {
   return (
     <div className="seller">
       <Sellerform />
+      <div>
+        <Sellerlist />
+      </div>
     </div>
   );
 }

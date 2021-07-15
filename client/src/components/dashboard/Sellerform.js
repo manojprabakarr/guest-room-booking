@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Button,
   Form,
@@ -8,6 +8,7 @@ import {
   TextArea,
 } from "semantic-ui-react";
 import GuestContext from "../../context/guestcontext/guestContext";
+import axios from "axios";
 
 function Sellerform() {
   const context = useContext(GuestContext);
@@ -15,38 +16,42 @@ function Sellerform() {
 
   useEffect(() => {
     if (editGuest !== null) {
-      setImage(editGuest);
       setpost(editGuest);
     } else {
-      setpost({
-        location: "",
-        description: "",
-        price: "",
-      });
+      setpost(intialState);
     }
-  }, []);
+  }, [editGuest, context]);
 
-  const filePickerRef = useRef(null);
-  const [image, setImage] = useState({ preview: "", raw: "" });
-  const [post, setpost] = useState({
+  //refresh state
+  const intialState = {
     location: "",
     description: "",
-    price: "",
-  });
+    price_perday: "",
+    maximum_stay: "",
+    postimage: "",
+  };
 
-  const { location, description, price } = post;
+  const [post, setpost] = useState(intialState);
 
+  const { location, description, price_perday, maximum_stay, postimage } = post;
   onchange = (e) => {
     setpost({ ...post, [e.target.name]: e.target.value });
   };
 
-  const handleChange = (e) => {
-    if (e.target.files.length) {
-      setImage({
-        preview: URL.createObjectURL(e.target.files[0]),
-        raw: e.target.files[0],
-      });
+  const onsubmit = async (e) => {
+    e.preventDefault();
+    if (
+      !(location || description || price_perday || maximum_stay || postimage)
+    ) {
+      alert("all feilds required");
+      return;
     }
+    if (editGuest === null) {
+      addGuest(post);
+    } else {
+      update_Guest(post);
+    }
+    setpost(intialState);
   };
 
   return (
@@ -57,7 +62,8 @@ function Sellerform() {
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Form size="large">
+          <h1>{editGuest !== null ? "Edit Guest" : "Add guest"}</h1>
+          <Form size="large" onSubmit={onsubmit}>
             <Segment>
               <Form.Input
                 type="text"
@@ -69,8 +75,15 @@ function Sellerform() {
               <Form.Input
                 placeholder="price perday"
                 type="number"
-                name="price"
-                value={price}
+                name="price_perday"
+                value={price_perday}
+                onChange={onchange}
+              />
+              <Form.Input
+                placeholder="maximum  days they can stay"
+                type="number"
+                name="maximum_stay"
+                value={maximum_stay}
                 onChange={onchange}
               />
               <TextArea
@@ -81,34 +94,26 @@ function Sellerform() {
                 style={{ marginBottom: "15px" }}
               />
               <Form.Input
-                type="file"
-                ref={filePickerRef}
-                onChange={handleChange}
+                type="text"
+                name="postimage"
+                value={postimage}
+                onChange={onchange}
+                //accept=".png, .jpg, .jpeg"
               />
-              <div>
-                {image.preview ? (
-                  <Image
-                    src={image.preview}
-                    style={{
-                      objectFit: "contain",
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    alt=""
-                  />
-                ) : (
-                  <h4>upload your roomsimages</h4>
-                )}
-              </div>
 
-              <Button
-                fluid
+              <input
                 type="submit"
-                style={{ backgroundColor: "#ff7779 " }}
-                size="large"
-              >
-                post
-              </Button>
+                value={editGuest !== null ? "Update Guest" : "Add Guest"}
+                className="btn"
+              />
+              {editGuest !== null ? (
+                <input
+                  onClick={clearEdit}
+                  type="button"
+                  className="btn clear"
+                  value="Cancel"
+                />
+              ) : null}
             </Segment>
           </Form>
         </Grid.Column>

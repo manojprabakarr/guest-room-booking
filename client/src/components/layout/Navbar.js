@@ -5,12 +5,15 @@ import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const { isAuthenticated, user, logout, clearErrors } =
-    useContext(AuthContext);
+  const { isAuthenticated, user, logout } = useContext(AuthContext);
+  const { isAuthencated, seller, sellerlogout } = useContext(SellerAuthContext);
 
   const onLogout = () => {
     logout();
-    clearErrors();
+  };
+
+  const Close = () => {
+    sellerlogout();
   };
 
   const authLinks = (
@@ -20,16 +23,6 @@ function Navbar() {
       <Menu.Item name="Explore rooms" />
 
       <Menu.Item onClick={onLogout} name="logout" />
-    </Fragment>
-  );
-
-  const sellerLinks = (
-    <Fragment>
-      <Menu.Item
-        name={SellerAuthContext.seller && SellerAuthContext.seller.name}
-      />
-
-      <Menu.Item onClick={() => SellerAuthContext.logout()} name="logout" />
     </Fragment>
   );
 
@@ -52,6 +45,13 @@ function Navbar() {
     </Fragment>
   );
 
+  const sellerLinks = (
+    <Fragment>
+      <Menu.Item name={seller && seller.name} />
+      <Menu.Item onClick={Close} name="logout" />
+    </Fragment>
+  );
+
   return (
     <div className="navbar">
       <Segment inverted>
@@ -67,7 +67,7 @@ function Navbar() {
 
           {isAuthenticated
             ? authLinks
-            : SellerAuthContext.isAuthenticated
+            : isAuthencated
             ? sellerLinks
             : guestLinks}
         </Menu>

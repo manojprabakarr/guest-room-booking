@@ -10,11 +10,12 @@ import {
 } from "../types";
 
 export default (state, { type, payload }) => {
+  console.log(type, payload);
   switch (type) {
     case SELLER_USER_LOADED:
       return {
         ...state,
-        isAuthenticated: true,
+        isAuthencated: true,
         seller: payload,
         loading: false,
         error: null,
@@ -25,7 +26,7 @@ export default (state, { type, payload }) => {
       return {
         ...state,
         ...payload,
-        isAuthenticated: true,
+        isAuthencated: true,
         loading: false,
         error: null,
       };
@@ -37,7 +38,7 @@ export default (state, { type, payload }) => {
       return {
         ...state,
         token: null,
-        isAuthenticated: null,
+        isAuthencated: null,
         seller: null,
         loading: false,
         error: payload,

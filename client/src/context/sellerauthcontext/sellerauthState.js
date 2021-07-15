@@ -17,7 +17,8 @@ import {
 const AuthState = (props) => {
   const intialState = {
     token: localStorage.getItem("token"),
-    isAuthenticated: null,
+
+    isAuthencated: null,
     loading: true,
     seller: null,
     error: null,
@@ -104,7 +105,7 @@ const AuthState = (props) => {
     });
   };
   // SELLER_LOGOUT
-  const logout = () => dispatch({ type: SELLER_LOGOUT });
+  const sellerlogout = () => dispatch({ type: SELLER_LOGOUT });
 
   // Clear Errors
   const clearErrors = () => dispatch({ type: SELLER_CLEAR_ERRORS });
@@ -112,14 +113,14 @@ const AuthState = (props) => {
     <SellerAuthContext.Provider
       value={{
         token: state.token,
-        isAuthenticated: state.isAuthenticated,
+        isAuthencated: state.isAuthencated,
         seller: state.seller,
         error: state.error,
         loading: state.loading,
         register,
         login,
         loadUser,
-        logout,
+        sellerlogout,
         clearErrors,
         setError,
       }}

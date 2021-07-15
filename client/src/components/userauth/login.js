@@ -21,10 +21,12 @@ function Login(props) {
     // eslint-disable-next-line
   }, [isAuthenticated, props.history]);
 
-  const [user, setUser] = useState({
+  const intialstate = {
     email: "",
     password: "",
-  });
+  };
+
+  const [user, setUser] = useState(intialstate);
   const { email, password } = user;
 
   const onchange = (e) => {
@@ -36,10 +38,15 @@ function Login(props) {
 
   const onsubmit = (e) => {
     e.preventDefault();
+    if (!(email || password)) {
+      alert("all feilds required");
+      return;
+    }
     login({
       email,
       password,
     });
+    setUser(intialstate);
   };
   return (
     <div className="login">

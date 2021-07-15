@@ -9,21 +9,17 @@ import {
   CLEAR_EDIT,
   UPDATE_GUEST,
   GET_GUESTS,
-  GUESTS_ERROR,
   CLEAR_GUESTS,
 } from "../types";
 
 const GuestState = (props) => {
   const intialState = {
-    guestFilter: false,
-    searchGuest: null,
     editGuest: null,
     guests: [],
-    error: null,
+    errors: null,
   };
   const [state, dispatch] = useReducer(guestReducer, intialState);
 
-  // get guests
   const getGuests = async () => {
     try {
       const res = await axios.get("http://localhost:8000/guestpost");
@@ -32,10 +28,7 @@ const GuestState = (props) => {
         payload: res.data,
       });
     } catch (err) {
-      dispatch({
-        type: GUESTS_ERROR,
-        payload: err.response.msg,
-      });
+      console.log(err);
     }
   };
 
@@ -49,6 +42,7 @@ const GuestState = (props) => {
       const res = await axios.post(
         "http://localhost:8000/guestpost",
         guest,
+
         config
       );
       dispatch({
@@ -56,10 +50,7 @@ const GuestState = (props) => {
         payload: res.data,
       });
     } catch (err) {
-      dispatch({
-        type: GUESTS_ERROR,
-        payload: err.response.msg,
-      });
+      alert(err.message);
     }
   };
 
@@ -72,10 +63,7 @@ const GuestState = (props) => {
         payload: id,
       });
     } catch (err) {
-      dispatch({
-        type: GUESTS_ERROR,
-        payload: err.response.msg,
-      });
+      alert(err.message);
     }
   };
 
@@ -91,18 +79,17 @@ const GuestState = (props) => {
       const res = await axios.put(
         `http://localhost:8000/guestpost/${guest._id}`,
         guest,
+
         config
       );
+
       dispatch({
         type: UPDATE_GUEST,
         payload: res.data,
       });
       getGuests();
     } catch (err) {
-      dispatch({
-        type: GUESTS_ERROR,
-        payload: err.response,
-      });
+      alert(err.message);
     }
   };
 
