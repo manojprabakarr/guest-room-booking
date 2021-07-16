@@ -17,6 +17,7 @@ import Navbar from "./components/layout/Navbar";
 import Sellerdashboard from "./components/dashboard/sellerdashboard";
 import Authlogin from "./components/sellerauth/Authlogin";
 import Authregister from "./components/sellerauth/Authregister";
+import Searchpage from "./components/dashboard/Searchpage";
 
 import "./App.css";
 
@@ -48,6 +49,8 @@ function App() {
                   <Route exact path="/authlogin" component={Authlogin} />
 
                   <Route exact path="/authregister" component={Authregister} />
+
+                  <Route exact path="/searchpage" component={Searchpage} />
                 </Switch>
               </div>
             </Router>

@@ -20,7 +20,9 @@ function Navbar() {
     <Fragment>
       <Menu.Item name={user && user.name} />
 
-      <Menu.Item name="Explore rooms" />
+      <Link to="/searchpage">
+        <Menu.Item name="Explore rooms" />
+      </Link>
 
       <Menu.Item onClick={onLogout} name="logout" />
     </Fragment>

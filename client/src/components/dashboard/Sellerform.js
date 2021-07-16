@@ -1,14 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-import {
-  Button,
-  Form,
-  Segment,
-  Grid,
-  Image,
-  TextArea,
-} from "semantic-ui-react";
+import { Form, Segment, Grid, TextArea } from "semantic-ui-react";
 import GuestContext from "../../context/guestcontext/guestContext";
-import axios from "axios";
 
 function Sellerform() {
   const context = useContext(GuestContext);
@@ -77,6 +69,7 @@ function Sellerform() {
                 name="price_perday"
                 value={price_perday}
                 onChange={onchange}
+                min="0"
               />
               <Form.Input
                 placeholder="maximum  days they can stay"
@@ -84,6 +77,8 @@ function Sellerform() {
                 name="maximum_stay"
                 value={maximum_stay}
                 onChange={onchange}
+                max="30"
+                min="0"
               />
               <TextArea
                 name="description"

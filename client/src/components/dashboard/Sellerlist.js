@@ -10,16 +10,17 @@ const Sellerlist = ({ guest }) => {
   useEffect(() => {
     getGuests();
   }, []);
-  // const { description, postimage, location, price_perday, maximum_stay } =
-  //   guests;
-  console.log("data", guests);
+  const { description, postimage, location, price_perday, maximum_stay } =
+    guests;
 
   return (
     <div className="datalist">
       <h1 style={{ textAlign: "center" }}>posts</h1>
       <div className="list">
-        <h3>guests.description</h3>
-        <h3>guestsguests.location</h3>
+        <h3>{guests.description}</h3>
+        {/* <h3>location</h3>
+        <h3>price_perday</h3>
+        <h3>maximum_stay</h3>  */}
       </div>
     </div>
   );
