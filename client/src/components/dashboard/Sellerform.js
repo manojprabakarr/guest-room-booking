@@ -36,14 +36,22 @@ function Sellerform() {
     setguest({ ...guest, [e.target.name]: e.target.value });
   };
 
-  const onsubmit = async (e) => {
-    e.preventDefault();
+  const onsubmit = async () => {
+   
     if (editGuest === null) {
       addGuest(guest);
+      alert("add successfully");
     } else {
       update_Guest(guest);
-      clearEdit();
     }
+    setguest({
+      location: "",
+
+      price_perday: "",
+      maximum_stay: "",
+      description: "",
+      postimage: "",
+    });
   };
 
   return (

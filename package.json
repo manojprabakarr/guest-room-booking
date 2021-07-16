@@ -22,6 +22,7 @@
     "mongoose": "^5.13.2",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
+    "nodemailer": "^6.6.3",
     "nodemon": "^2.0.11",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",

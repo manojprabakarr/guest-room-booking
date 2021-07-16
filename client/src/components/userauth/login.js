@@ -11,7 +11,8 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../context/authcontext/authContext";
 
 function Login(props) {
-  const { login, isAuthenticated } = useContext(AuthContext);
+  const { login, isAuthenticated, error, clearErrors } =
+    useContext(AuthContext);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -35,9 +36,6 @@ function Login(props) {
 
   const onsubmit = (e) => {
     e.preventDefault();
-    if (!(email || password)) {
-      alert("all fileds required");
-    }
 
     login({
       email,
@@ -63,6 +61,7 @@ function Login(props) {
           >
             Guestroom-Login
           </Header>
+
           <Form size="large" onSubmit={onsubmit}>
             <Segment>
               <Form.Input

@@ -9,10 +9,10 @@ const Sellerlist = ({ guest }) => {
 
   const { _id, location, price_perday, maximum_stay, description, postimage } =
     guest;
-  console.log(guest);
 
   const handleRemove = () => {
     removeGuest(_id);
+    clearEdit();
   };
 
   return (

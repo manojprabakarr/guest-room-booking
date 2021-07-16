@@ -30,6 +30,7 @@ const AuthState = (props) => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
+
     try {
       const res = await axios.get("http://localhost:8000/userlogin");
       dispatch({

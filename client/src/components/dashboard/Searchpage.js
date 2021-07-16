@@ -10,6 +10,19 @@ function Searchpage() {
     loadUser();
   }, []);
 
+  const [post, setpost] = useState([]);
+  useEffect(() => {
+    const Getall = async () => {
+      await fetch("http://localhost:8000/getall")
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("getall", data);
+          setpost(data);
+        });
+    };
+    Getall();
+  }, []);
+
   return (
     <div className="searchpage">
       <div className="searchpageinfo">
@@ -23,15 +36,17 @@ function Searchpage() {
         <Button variant="outlined">More filters</Button>
       </div>
       <div className="searchpageresult">
-        <SearchResult
-          src="https://images.pexels.com/photos/584399/living-room-couch-interior-room-584399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          location="Private room in center of London"
-          title="Stay at this spacious Edwardian House"
-          desc="1 guest . 1 bedroom . 1 bed . Wifi . Kitchen . Free parking . Washing Machine"
-          star="4.7"
-          price="$80/night"
-          total="$240 total"
-        />
+        {post.map((posts) => (
+          <SearchResult
+            src={posts.postimage}
+            location={posts.location}
+            title={posts.maximum_stay}
+            desc={posts.description}
+            star="4.7"
+            price={posts.price_perday}
+            user={posts.user}
+          />
+        ))}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ router.get("/", async (req, res) => {
       date: -1,
     });
     res.json(users);
+    return res.status(200).send("success");
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Internal Server Error");
