@@ -18,7 +18,6 @@ function Login(props) {
     if (isAuthenticated) {
       props.history.push("/");
     }
-    // eslint-disable-next-line
   }, [isAuthenticated, props.history]);
 
   const [user, setUser] = useState({

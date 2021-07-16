@@ -57,7 +57,7 @@ router.put("/:id", sellerAuth, async (req, res) => {
     res.send(rent);
   } catch (err) {
     console.errors(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ msg: "internal server error" });
   }
 });
 
@@ -87,7 +87,7 @@ router.get("/", sellerAuth, async (req, res) => {
     res.json(rents);
   } catch (error) {
     console.error(error.message);
-    res.status(500).send({ msg: "inetrnal server error" });
+    res.status(500).json({ msg: "internal server error" });
   }
 });
 

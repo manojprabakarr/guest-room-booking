@@ -38,6 +38,7 @@ const Register = (props) => {
 
   onsubmit = (e) => {
     e.preventDefault();
+
     if (password !== password1) {
       alert("Password does not match");
     } else {
@@ -48,7 +49,6 @@ const Register = (props) => {
         password,
       });
     }
-    setuser(refresh);
   };
 
   return (
