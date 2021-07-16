@@ -1,32 +1,21 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Form, Segment, Grid, TextArea } from "semantic-ui-react";
+import { Form, Segment, Grid, TextArea, Button } from "semantic-ui-react";
 import GuestContext from "../../context/guestcontext/guestContext";
 
 function Sellerform() {
   const context = useContext(GuestContext);
-  const { addGuest, editGuest, clearEdit, update_Guest } = context;
+  const { addGuest } = context;
 
-  useEffect(() => {
-    if (editGuest !== null) {
-      setpost(editGuest);
-    } else {
-      setpost(intialState);
-    }
-  }, [editGuest, context]);
-
-  //refresh state
-  const intialState = {
+  const [post, setpost] = useState({
     location: "",
     description: "",
     price_perday: "",
     maximum_stay: "",
     postimage: "",
-  };
-
-  const [post, setpost] = useState(intialState);
+  });
 
   const { location, description, price_perday, maximum_stay, postimage } = post;
-  onchange = (e) => {
+  const onchange = (e) => {
     setpost({ ...post, [e.target.name]: e.target.value });
   };
 
@@ -37,13 +26,9 @@ function Sellerform() {
     ) {
       alert("all feilds required");
       return;
-    }
-    if (editGuest === null) {
-      addGuest(post);
     } else {
-      update_Guest(post);
+      addGuest(post);
     }
-    setpost(intialState);
   };
 
   return (
@@ -53,7 +38,7 @@ function Sellerform() {
         style={{ height: "100vh", width: "500px", minWidth: "100px" }}
       >
         <Grid.Column style={{ maxWidth: 450 }}>
-          <h1>{editGuest !== null ? "Edit Guest" : "Add guest"}</h1>
+          <h1>Add guest</h1>
           <Form size="large" onSubmit={onsubmit}>
             <Segment>
               <Form.Input
@@ -93,22 +78,10 @@ function Sellerform() {
                 placeholder="image url"
                 value={postimage}
                 onChange={onchange}
-                //accept=".png, .jpg, .jpeg"
               />
-
-              <input
-                type="submit"
-                value={editGuest !== null ? "Update Guest" : "Add Guest"}
-                className="btn"
-              />
-              {editGuest !== null ? (
-                <input
-                  onClick={clearEdit}
-                  type="button"
-                  className="btn clear"
-                  value="Cancel"
-                />
-              ) : null}
+              <Button fluid type="submit">
+                Post
+              </Button>
             </Segment>
           </Form>
         </Grid.Column>

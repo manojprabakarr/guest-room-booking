@@ -3,7 +3,7 @@ const userrents = require("../../models/userrent");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const auth = require("../../middleware/auth");
+const sellerAuth = require("../../middleware/sellerauth");
 
 router.post(
   "/",
@@ -55,7 +55,7 @@ router.post(
   }
 );
 
-router.get("/", auth, async (req, res) => {
+router.get("/", sellerAuth, async (req, res) => {
   try {
     const user = await userrents.findById(req.user.id).select("-password");
     res.json(user);

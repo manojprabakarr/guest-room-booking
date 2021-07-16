@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const Rent = require("../../models/Rent");
 
-const auth = require("../../middleware/auth");
+const sellerAuth = require("../../middleware/sellerauth");
 
 //posting using userid
 router.post(
   "/",
 
-  auth,
+  sellerAuth,
 
   async (req, res) => {
     try {
@@ -31,7 +31,7 @@ router.post(
 
 //updating using userid
 
-router.put("/:id", auth, async (req, res) => {
+router.put("/:id", sellerAuth, async (req, res) => {
   // build Guest object
   const guestFields = {
     location: req.body.location,
@@ -63,7 +63,7 @@ router.put("/:id", auth, async (req, res) => {
 
 //delete using userid
 
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/:id", sellerAuth, async (req, res) => {
   try {
     let rent = await Rent.findById(req.params.id);
     if (!rent) return res.status(404).json({ msg: "Guest not found" });
@@ -81,7 +81,7 @@ router.delete("/:id", auth, async (req, res) => {
 
 // getting data using user_id
 
-router.get("/", auth, async (req, res) => {
+router.get("/", sellerAuth, async (req, res) => {
   try {
     const rents = await Rent.find({ user: req.user.id });
     res.json(rents);

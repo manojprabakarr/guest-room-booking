@@ -1,26 +1,39 @@
 import React, { useContext, useEffect } from "react";
-
+import { Button } from "semantic-ui-react";
 import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
 import GuestContext from "../../context/guestcontext/guestContext";
 
-const Sellerlist = ({ guest }) => {
+const Sellerlist = ({
+  location,
+  description,
+  price,
+  maximum,
+  image,
+  userid,
+}) => {
   const { loading } = useContext(SellerAuthContext);
-  const { guests, getGuests } = useContext(GuestContext);
+  const { removeGuest, edit_Guest, clearEdit } = useContext(GuestContext);
 
-  useEffect(() => {
-    getGuests();
-  }, []);
-  const { description, postimage, location, price_perday, maximum_stay } =
-    guests;
+  const handleRemove = () => {
+    removeGuest(userid);
+  };
 
   return (
-    <div className="datalist">
-      <h1 style={{ textAlign: "center" }}>posts</h1>
-      <div className="list">
-        <h3>{guests.description}</h3>
-        {/* <h3>location</h3>
-        <h3>price_perday</h3>
-        <h3>maximum_stay</h3>  */}
+    <div className="list">
+      <div className="listcontainer">
+        <img src={image} alt="image" className="imagelist" width="100px" />
+        <div className="listinfo">
+          <p>location:{location}</p>
+          <p>description:{description}</p>
+          <p>price:{price} Rs</p>
+          <p>maximumdays:{maximum}</p>
+          <div className="listbutton">
+            <Button content="Primary">editpost</Button>
+            <Button onClick={handleRemove} content="Primary">
+              deletepost
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );

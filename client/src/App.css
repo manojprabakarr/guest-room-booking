@@ -1,3 +1,6 @@
+* {
+  font-family: "ubuntu";
+}
 .banner {
   height: 100vh;
 
@@ -67,12 +70,8 @@
 .seller {
   display: flex;
   justify-content: space-evenly;
-  margin: 80px;
-}
-
-.list {
-  border: 1px solid #ccc;
-  padding: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .searchpageinfo {
@@ -135,4 +134,31 @@
   position: absolute;
   right: 40px;
   bottom: 20px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 15px;
+
+  margin-top: 6px;
+  border: 1px solid lightgray;
+}
+
+.listcontainer {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+.listinfo {
+  margin-left: 7px;
+}
+.posttwo {
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+.imagelist {
+  object-fit: contain;
 }
