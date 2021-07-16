@@ -16,8 +16,9 @@ function Sellerdashboard() {
   return (
     <div className="seller">
       <Sellerform />
-      <div className="posttwo">
+      <div className="posttwo" key={guests._id}>
         <h1 style={{ textAlign: "center" }}>posts</h1>
+
         {guests.map((data) => {
           return (
             <Sellerlist

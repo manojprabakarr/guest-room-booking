@@ -1,6 +1,6 @@
 import React from "react";
 import "semantic-ui-css/semantic.min.css";
-//import logo from "./logo.svg";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //context provider
@@ -8,6 +8,8 @@ import AuthState from "./context/authcontext/authState";
 import SellerAuthState from "./context/sellerauthcontext/sellerauthState";
 import GuestState from "./context/guestcontext/guestState";
 import AuthToken from "./utils/authtoken";
+
+//route pages
 import Login from "./components/userauth/login";
 import Register from "./components/userauth/register";
 import Userdashboard from "./components/dashboard/userdashboard";
@@ -18,7 +20,6 @@ import Sellerdashboard from "./components/dashboard/sellerdashboard";
 import Authlogin from "./components/sellerauth/Authlogin";
 import Authregister from "./components/sellerauth/Authregister";
 import Searchpage from "./components/dashboard/Searchpage";
-
 import "./App.css";
 
 if (localStorage.token) {
@@ -50,7 +51,11 @@ function App() {
 
                   <Route exact path="/authregister" component={Authregister} />
 
-                  <Route exact path="/searchpage" component={Searchpage} />
+                  <PrivateRoute
+                    exact
+                    path="/searchpage"
+                    component={Searchpage}
+                  />
                 </Switch>
               </div>
             </Router>

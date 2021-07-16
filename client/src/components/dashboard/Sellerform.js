@@ -4,7 +4,7 @@ import GuestContext from "../../context/guestcontext/guestContext";
 
 function Sellerform() {
   const context = useContext(GuestContext);
-  const { addGuest } = context;
+  const { addGuest, edit_Guest, clearEdit, update_Guest } = context;
 
   const [post, setpost] = useState({
     location: "",
@@ -21,14 +21,8 @@ function Sellerform() {
 
   const onsubmit = async (e) => {
     e.preventDefault();
-    if (
-      !(location || description || price_perday || maximum_stay || postimage)
-    ) {
-      alert("all feilds required");
-      return;
-    } else {
-      addGuest(post);
-    }
+
+    addGuest(post);
   };
 
   return (
@@ -79,9 +73,19 @@ function Sellerform() {
                 value={postimage}
                 onChange={onchange}
               />
-              <Button fluid type="submit">
-                Post
-              </Button>
+              <Form.Input
+                type="submit"
+                value={edit_Guest !== null ? "Update Guest" : "Add Guest"}
+                className="btn"
+              />
+              {edit_Guest !== null ? (
+                <Form.Input
+                  onClick={clearEdit}
+                  type="button"
+                  className="btn clear"
+                  value="Cancel"
+                />
+              ) : null}
             </Segment>
           </Form>
         </Grid.Column>

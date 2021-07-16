@@ -4,12 +4,12 @@ import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext
 import GuestContext from "../../context/guestcontext/guestContext";
 
 const Sellerlist = ({
+  userid,
   location,
   description,
   price,
   maximum,
   image,
-  userid,
 }) => {
   const { loading } = useContext(SellerAuthContext);
   const { removeGuest, edit_Guest, clearEdit } = useContext(GuestContext);
