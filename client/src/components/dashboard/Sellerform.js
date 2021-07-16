@@ -4,9 +4,23 @@ import GuestContext from "../../context/guestcontext/guestContext";
 
 function Sellerform() {
   const context = useContext(GuestContext);
-  const { addGuest, edit_Guest, clearEdit, update_Guest } = context;
+  const { addGuest, editGuest, update_Guest } = context;
 
-  const [post, setpost] = useState({
+  useEffect(() => {
+    if (editGuest !== null) {
+      setguest(editGuest);
+    } else {
+      setguest({
+        location: "",
+        description: "",
+        price_perday: "",
+        maximum_stay: "",
+        postimage: "",
+      });
+    }
+  }, [editGuest]);
+
+  const [guest, setguest] = useState({
     location: "",
     description: "",
     price_perday: "",
@@ -14,15 +28,19 @@ function Sellerform() {
     postimage: "",
   });
 
-  const { location, description, price_perday, maximum_stay, postimage } = post;
+  const { location, description, price_perday, maximum_stay, postimage } =
+    guest;
   const onchange = (e) => {
-    setpost({ ...post, [e.target.name]: e.target.value });
+    setguest({ ...guest, [e.target.name]: e.target.value });
   };
 
   const onsubmit = async (e) => {
     e.preventDefault();
-
-    addGuest(post);
+    if (editGuest === null) {
+      addGuest(guest);
+    } else {
+      update_Guest(guest);
+    }
   };
 
   return (
@@ -75,12 +93,11 @@ function Sellerform() {
               />
               <Form.Input
                 type="submit"
-                value={edit_Guest !== null ? "Update Guest" : "Add Guest"}
+                value={editGuest !== null ? "Update Guest" : "Add Guest"}
                 className="btn"
               />
-              {edit_Guest !== null ? (
+              {editGuest !== null ? (
                 <Form.Input
-                  onClick={clearEdit}
                   type="button"
                   className="btn clear"
                   value="Cancel"

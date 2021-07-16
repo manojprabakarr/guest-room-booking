@@ -94,15 +94,15 @@ const GuestState = (props) => {
   };
 
   // Edit Guest
-  const edit_Guest = (guest) => {
+  const edit_Guest = () => {
     dispatch({
       type: EDIT_GUEST,
-      payload: guest,
     });
   };
-  const clearEdit = () => {
+  const clearEdit = (guest) => {
     dispatch({
       type: CLEAR_EDIT,
+      payload: guest,
     });
   };
   const clearGuests = () => {

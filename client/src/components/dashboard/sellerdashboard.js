@@ -16,21 +16,10 @@ function Sellerdashboard() {
   return (
     <div className="seller">
       <Sellerform />
-      <div className="posttwo" key={guests._id}>
+      <div className="posttwo">
         <h1 style={{ textAlign: "center" }}>posts</h1>
-
         {guests.map((data) => {
-          return (
-            <Sellerlist
-              key={data.id}
-              userid={data._id}
-              location={data.location}
-              price={data.price_perday}
-              maximum={data.maximum_stay}
-              description={data.description}
-              image={data.postimage}
-            />
-          );
+          return <Sellerlist guest={data} />;
         })}
       </div>
     </div>

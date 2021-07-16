@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SearchResult from "./SearchResult";
 import { Button } from "semantic-ui-react";
 import AuthContext from "../../context/authcontext/authContext";
@@ -8,6 +8,7 @@ function Searchpage() {
   useEffect(() => {
     loadUser();
   }, []);
+
   return (
     <div className="searchpage">
       <div className="searchpageinfo">
