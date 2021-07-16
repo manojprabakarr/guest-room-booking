@@ -18,6 +18,7 @@ const GuestState = (props) => {
     guests: [],
     errors: null,
   };
+
   const [state, dispatch] = useReducer(guestReducer, intialState);
 
   const getGuests = async () => {
@@ -94,9 +95,10 @@ const GuestState = (props) => {
   };
 
   // Edit Guest
-  const edit_Guest = () => {
+  const edit_Guest = (guest) => {
     dispatch({
       type: EDIT_GUEST,
+      payload: guest,
     });
   };
   const clearEdit = (guest) => {

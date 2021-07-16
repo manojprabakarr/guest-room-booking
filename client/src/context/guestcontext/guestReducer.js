@@ -10,6 +10,7 @@ import {
 } from "../types";
 
 export default (state, { type, payload }) => {
+  console.log(type, payload);
   switch (type) {
     case GET_GUESTS:
       return {

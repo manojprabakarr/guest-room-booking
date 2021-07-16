@@ -7,8 +7,9 @@ const Sellerlist = ({ guest }) => {
   const { loading } = useContext(SellerAuthContext);
   const { removeGuest, edit_Guest, clearEdit } = useContext(GuestContext);
 
-  const { _id, location, description, price_perday, maximum_stay, postimage } =
+  const { _id, location, price_perday, maximum_stay, description, postimage } =
     guest;
+  console.log(guest);
 
   const handleRemove = () => {
     removeGuest(_id);

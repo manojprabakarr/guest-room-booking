@@ -4,7 +4,7 @@ import GuestContext from "../../context/guestcontext/guestContext";
 
 function Sellerform() {
   const context = useContext(GuestContext);
-  const { addGuest, editGuest, update_Guest } = context;
+  const { addGuest, editGuest, update_Guest, clearEdit } = context;
 
   useEffect(() => {
     if (editGuest !== null) {
@@ -12,9 +12,10 @@ function Sellerform() {
     } else {
       setguest({
         location: "",
-        description: "",
+
         price_perday: "",
         maximum_stay: "",
+        description: "",
         postimage: "",
       });
     }
@@ -22,9 +23,10 @@ function Sellerform() {
 
   const [guest, setguest] = useState({
     location: "",
-    description: "",
+
     price_perday: "",
     maximum_stay: "",
+    description: "",
     postimage: "",
   });
 
@@ -40,6 +42,7 @@ function Sellerform() {
       addGuest(guest);
     } else {
       update_Guest(guest);
+      clearEdit();
     }
   };
 
@@ -99,6 +102,7 @@ function Sellerform() {
               {editGuest !== null ? (
                 <Form.Input
                   type="button"
+                  onClick={clearEdit}
                   className="btn clear"
                   value="Cancel"
                 />
