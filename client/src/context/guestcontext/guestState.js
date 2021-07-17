@@ -10,6 +10,7 @@ import {
   UPDATE_GUEST,
   GET_GUESTS,
   CLEAR_GUESTS,
+  GUESTS_ERROR,
 } from "../types";
 
 const GuestState = (props) => {
@@ -51,7 +52,10 @@ const GuestState = (props) => {
         payload: res.data,
       });
     } catch (err) {
-      alert(err.message);
+      dispatch({
+        type: GUESTS_ERROR,
+        payload: err.response.msg,
+      });
     }
   };
 
@@ -64,7 +68,10 @@ const GuestState = (props) => {
         payload: id,
       });
     } catch (err) {
-      alert(err.message);
+      dispatch({
+        type: GUESTS_ERROR,
+        payload: err.response.msg,
+      });
     }
   };
 
@@ -90,7 +97,10 @@ const GuestState = (props) => {
       });
       getGuests();
     } catch (err) {
-      alert(err.message);
+      dispatch({
+        type: GUESTS_ERROR,
+        payload: err.response.msg,
+      });
     }
   };
 

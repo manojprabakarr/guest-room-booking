@@ -44,6 +44,7 @@ function Sellerform() {
       alert("add successfully");
     } else {
       update_Guest(guest);
+      alert("updated successfully");
     }
     setguest({
       location: "",
