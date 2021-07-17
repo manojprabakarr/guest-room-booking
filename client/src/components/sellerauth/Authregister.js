@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
 
 function Authregister(props) {
-  const { register, error, isAuthenticated, clearErrors, setError } =
+  const { register, error, isAuthenticated, clearErrors } =
     useContext(SellerAuthContext);
 
   useEffect(() => {

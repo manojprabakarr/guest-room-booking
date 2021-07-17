@@ -6,7 +6,6 @@ import {
   Header,
   Message,
   Segment,
-  Label,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authcontext/authContext";

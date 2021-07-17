@@ -1,10 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Button } from "semantic-ui-react";
-import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
+
 import GuestContext from "../../context/guestcontext/guestContext";
 
 const Sellerlist = ({ guest }) => {
-  const { loading } = useContext(SellerAuthContext);
   const { removeGuest, edit_Guest, clearEdit } = useContext(GuestContext);
 
   const { _id, location, price_perday, maximum_stay, description, postimage } =
@@ -18,7 +17,12 @@ const Sellerlist = ({ guest }) => {
   return (
     <div className="list">
       <div className="listcontainer">
-        <img src={postimage} alt="image" className="imagelist" width="100px" />
+        <img
+          src={postimage}
+          alt="noimage"
+          className="imagelist"
+          width="100px"
+        />
         <div className="listinfo">
           <p>location:{location}</p>
           <p>description:{description}</p>

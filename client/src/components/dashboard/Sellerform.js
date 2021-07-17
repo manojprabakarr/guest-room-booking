@@ -38,8 +38,11 @@ function Sellerform() {
 
   const onsubmit = async (e) => {
     e.preventDefault();
-
-    if (editGuest === null) {
+    if (
+      !(location || description || price_perday || maximum_stay || postimage)
+    ) {
+      alert("all fields required");
+    } else if (editGuest === null) {
       addGuest(guest);
       alert("add successfully");
     } else {
