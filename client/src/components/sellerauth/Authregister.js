@@ -11,14 +11,14 @@ import { Link } from "react-router-dom";
 import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
 
 function Authregister(props) {
-  const { register, error, isAuthenticated, clearErrors } =
+  const { register, error, isAuthencated, clearErrors } =
     useContext(SellerAuthContext);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthencated) {
       props.history.push("/hosthome");
     }
-  }, [isAuthenticated, props.history]);
+  }, [isAuthencated, props.history]);
   const [userdata, setuserdata] = useState({
     name: "",
     email: "",

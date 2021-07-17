@@ -37,7 +37,7 @@ router.put("/:id", sellerAuth, async (req, res) => {
     description: req.body.description,
     price_perday: req.body.price_perday,
     maximum_stay: req.body.maximum_stay,
-    postimage: req.body.image,
+    postimage: req.body.postimage,
   };
 
   try {

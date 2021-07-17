@@ -17,6 +17,7 @@ const GuestState = (props) => {
   const intialState = {
     editGuest: null,
     guests: [],
+
     errors: null,
   };
 
