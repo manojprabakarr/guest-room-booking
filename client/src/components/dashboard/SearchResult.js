@@ -2,6 +2,7 @@ import React from "react";
 import StarIcon from "@material-ui/icons/Star";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 function Searchresult({ src, desc, location, title, star, user, price }) {
   return (
@@ -24,10 +25,11 @@ function Searchresult({ src, desc, location, title, star, user, price }) {
           </div>
           <div className="resultprice">
             <h2>{price}rs per day</h2>
-
-            <Button fluid style={{ backgroundColor: "#ff7779" }}>
-              book now{" "}
-            </Button>
+            <Link to="/order">
+              <Button fluid style={{ backgroundColor: "#ff7779" }}>
+                book now
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

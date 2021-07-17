@@ -20,6 +20,7 @@ import Sellerdashboard from "./components/dashboard/sellerdashboard";
 import Authlogin from "./components/sellerauth/Authlogin";
 import Authregister from "./components/sellerauth/Authregister";
 import Searchpage from "./components/dashboard/Searchpage";
+import Order from "./components/dashboard/Order";
 import "./App.css";
 
 if (localStorage.token) {
@@ -37,6 +38,13 @@ function App() {
                 <Switch>
                   <PrivateRoute exact path="/" component={Userdashboard} />
 
+                  <PrivateRoute
+                    exact
+                    path="/searchpage"
+                    component={Searchpage}
+                  />
+                  <PrivateRoute path="/order" component={Order} />
+
                   <PublicRoute
                     exact
                     path="/hosthome"
@@ -50,12 +58,6 @@ function App() {
                   <Route exact path="/authlogin" component={Authlogin} />
 
                   <Route exact path="/authregister" component={Authregister} />
-
-                  <PrivateRoute
-                    exact
-                    path="/searchpage"
-                    component={Searchpage}
-                  />
                 </Switch>
               </div>
             </Router>

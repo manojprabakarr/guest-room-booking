@@ -66,7 +66,7 @@ const AuthState = (props) => {
       console.log(err);
       dispatch({
         type: SELLER_REGISTER_FAIL,
-        payload: err.response,
+        payload: err.response.data.msg,
       });
     }
   };
@@ -93,17 +93,11 @@ const AuthState = (props) => {
     } catch (err) {
       dispatch({
         type: SELLER_LOGIN_FAIL,
-        payload: err.response,
+        payload: err.response.data.msg,
       });
     }
   };
 
-  const setError = (err) => {
-    dispatch({
-      type: SELLER_REGISTER_FAIL,
-      payload: [{ msg: err }],
-    });
-  };
   // SELLER_LOGOUT
   const sellerlogout = () => dispatch({ type: SELLER_LOGOUT });
 
@@ -122,7 +116,6 @@ const AuthState = (props) => {
         loadUser,
         sellerlogout,
         clearErrors,
-        setError,
       }}
     >
       {props.children}

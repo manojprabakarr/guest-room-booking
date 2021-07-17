@@ -17,7 +17,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
-      return res.status(400).json({ error: errors.array() });
+      return res.status(400).json({ msg: "all feilds required" });
 
     const { name, email, password, phno } = req.body;
 

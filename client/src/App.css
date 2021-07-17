@@ -162,3 +162,12 @@
 .imagelist {
   object-fit: contain;
 }
+
+.danger {
+  color: black;
+  background-color: lightcoral;
+  border-color: lightcoral;
+  font-family: monospace;
+  width: 100%;
+  margin-bottom: 40px;
+}

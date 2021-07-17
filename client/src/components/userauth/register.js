@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../context/authcontext/authContext";
 
 const Register = (props) => {
-  const { register, error, isAuthenticated, clearErrors, setError } =
+  const { register, error, isAuthenticated, clearErrors } =
     useContext(AuthContext);
 
   useEffect(() => {
@@ -20,35 +20,33 @@ const Register = (props) => {
     }
   }, [isAuthenticated, props.history]);
 
-  const refresh = {
+  const [user, setuser] = useState({
     name: "",
     email: "",
     password: "",
     phno: "",
     password1: "",
-  };
+  });
 
-  const [user, setuser] = useState(refresh);
-
-  const { name, email, password, phno, password1 } = user;
+  const { name, email, password, phno } = user;
 
   onchange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
+
+    if (error !== null) {
+      clearErrors();
+    }
   };
 
   onsubmit = (e) => {
     e.preventDefault();
 
-    if (password !== password1) {
-      alert("Password does not match");
-    } else {
-      register({
-        name,
-        email,
-        phno,
-        password,
-      });
-    }
+    register({
+      name,
+      email,
+      phno,
+      password,
+    });
   };
 
   return (
@@ -108,14 +106,11 @@ const Register = (props) => {
                 style={{ marginBottom: "30px" }}
               />
 
-              <Form.Input
-                placeholder="confirm Password"
-                style={{ marginBottom: "30px" }}
-                type="password"
-                name="password1"
-                value={password1}
-                onChange={onchange}
-              />
+              {error !== null && (
+                <button className="danger" type="button">
+                  {error} <span onClick={() => clearErrors()}>X</span>
+                </button>
+              )}
 
               <Button
                 fluid

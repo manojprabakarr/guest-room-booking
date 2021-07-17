@@ -18,6 +18,7 @@ export default (state, { type, payload }) => {
         guests: payload,
         error: null,
       };
+
     case ADD_GUEST:
       return {
         ...state,

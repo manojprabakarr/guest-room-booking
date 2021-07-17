@@ -11,14 +11,16 @@ import { Link } from "react-router-dom";
 import SellerAuthContext from "../../context/sellerauthcontext/sellerauthContext";
 
 function Authlogin(props) {
-  const { login, error, isAuthencated, clearErrors, setError } =
+  const { login, error, isAuthencated, clearErrors } =
     useContext(SellerAuthContext);
 
   useEffect(() => {
     if (isAuthencated) {
       props.history.push("/hosthome");
+      clearErrors();
+    } else {
+      clearErrors();
     }
-    // eslint-disable-next-line
   }, [isAuthencated, props.history]);
 
   const [userdata, setuserdata] = useState({
@@ -42,6 +44,7 @@ function Authlogin(props) {
       email,
       password,
     });
+    clearErrors();
   };
 
   return (
@@ -82,6 +85,12 @@ function Authlogin(props) {
                 value={password}
                 onChange={onchange}
               />
+
+              {error !== null && (
+                <button className="danger" type="button">
+                  {error} <span onClick={() => clearErrors()}>X</span>
+                </button>
+              )}
 
               <Button
                 type="submit"

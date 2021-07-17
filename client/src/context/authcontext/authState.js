@@ -97,13 +97,6 @@ const AuthState = (props) => {
     }
   };
 
-  const setError = (err) => {
-    dispatch({
-      type: REGISTER_FAIL,
-      payload: [{ msg: err }],
-    });
-  };
-
   const logout = () => dispatch({ type: LOGOUT });
 
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
@@ -120,7 +113,7 @@ const AuthState = (props) => {
         login,
         loadUser,
         logout,
-        setError,
+
         clearErrors,
       }}
     >

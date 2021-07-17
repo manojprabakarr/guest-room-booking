@@ -14,7 +14,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ msg: "all feilds required" });
 
     const { email, password } = req.body;
 
@@ -22,12 +22,12 @@ router.post(
       let user = await userrents.findOne({ email });
 
       if (!user) {
-        return res.status(400).json({ msg: "invalid  data" });
+        return res.status(400).json({ msg: "invalid  email" });
       }
 
       const Match = await bcrypt.compare(password, user.password);
       if (!Match) {
-        return res.status(400).json({ msg: "invalid data" });
+        return res.status(400).json({ msg: "invalid password" });
       }
 
       //generate access token

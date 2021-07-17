@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Form, Segment, Grid, TextArea, Button } from "semantic-ui-react";
+import { Form, Segment, Grid, TextArea } from "semantic-ui-react";
 import GuestContext from "../../context/guestcontext/guestContext";
 
 function Sellerform() {
@@ -36,8 +36,9 @@ function Sellerform() {
     setguest({ ...guest, [e.target.name]: e.target.value });
   };
 
-  const onsubmit = async () => {
-   
+  const onsubmit = async (e) => {
+    e.preventDefault();
+
     if (editGuest === null) {
       addGuest(guest);
       alert("add successfully");

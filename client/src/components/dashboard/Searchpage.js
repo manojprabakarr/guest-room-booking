@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 function Searchpage() {
   const { loadUser } = useContext(AuthContext);
+
   useEffect(() => {
     loadUser();
   }, []);

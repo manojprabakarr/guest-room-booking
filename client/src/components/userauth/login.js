@@ -6,6 +6,7 @@ import {
   Header,
   Message,
   Segment,
+  Label,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authcontext/authContext";
@@ -17,6 +18,9 @@ function Login(props) {
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push("/");
+      clearErrors();
+    } else {
+      clearErrors();
     }
   }, [isAuthenticated, props.history]);
 
@@ -40,6 +44,7 @@ function Login(props) {
       email,
       password,
     });
+    clearErrors();
   };
   return (
     <div className="login">
@@ -80,6 +85,12 @@ function Login(props) {
                 value={password}
                 onChange={onchange}
               />
+
+              {error !== null && (
+                <button className="danger" type="button">
+                  {error} <span onClick={() => clearErrors()}>X</span>
+                </button>
+              )}
 
               <Button
                 type="submit"
