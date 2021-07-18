@@ -4,7 +4,7 @@ import { Button } from "semantic-ui-react";
 import AuthContext from "../../context/authcontext/authContext";
 
 import { Link } from "react-router-dom";
-
+//load all rooms
 function Searchpage() {
   const { loadUser } = useContext(AuthContext);
 
