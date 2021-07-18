@@ -27,15 +27,14 @@ router.post("/", auth, async (req, res) => {
 //@route  /order
 //@desc get all orders and show to particular seller
 
-router.get("/", sellerAuth, async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
-    order = await Order.findOne({ productid });
+    const orders = await Order.find({});
 
-    if (productid === req.user.id) {
-      res.json(order);
-    }
+    return res.status(200).json({ orders });
   } catch (err) {
     console.error(err.message);
+    res.status(500).send("Internal Server Error");
   }
 });
 

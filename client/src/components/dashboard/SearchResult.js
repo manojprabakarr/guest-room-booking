@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import StarIcon from "@material-ui/icons/Star";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { Button } from "semantic-ui-react";
@@ -8,7 +8,11 @@ import OrderContext from "../../context/ordercontext/orderContext";
 function Searchresult({ src, desc, location, title, star, sellerid, price }) {
   const { user } = useContext(AuthContext);
   const context = useContext(OrderContext);
-  const { addOrder } = context;
+  const { addOrder, getOrder, orderpost } = context;
+
+  useEffect(() => {
+    getOrder();
+  }, []);
 
   const refresh = {
     noofguests: "",
@@ -32,7 +36,6 @@ function Searchresult({ src, desc, location, title, star, sellerid, price }) {
       addOrder(order);
       alert("order placed");
       setorder(refresh);
-      console.log(order);
     }
   };
 
@@ -71,6 +74,7 @@ function Searchresult({ src, desc, location, title, star, sellerid, price }) {
                 name="startdate"
                 value={startdate}
                 onChange={onchange}
+                min={orderpost.startdate}
               />
               enddate:
               <input
@@ -79,6 +83,7 @@ function Searchresult({ src, desc, location, title, star, sellerid, price }) {
                 value={enddate}
                 onChange={onchange}
                 placeholder="enddate"
+                min={orderpost.enddate}
               />
               <Button
                 type="submit"

@@ -30,3 +30,4 @@ export const REMOVE_GUEST = "REMOVE_GUEST";
 //order context
 export const ADD_ORDER = "ADD_ORDER";
 export const ORDER_ERROR = "ORDER_ERROR";
+export const GET_ORDER = "GET_ORDER";

@@ -1,4 +1,4 @@
-import { ADD_ORDER, ORDER_ERROR } from "../types";
+import { ADD_ORDER, ORDER_ERROR, GET_ORDER } from "../types";
 
 export default (state, { type, payload }) => {
   switch (type) {
@@ -11,6 +11,13 @@ export default (state, { type, payload }) => {
       return {
         ...state,
         error: payload,
+      };
+
+    case GET_ORDER:
+      return {
+        ...state,
+        orderpost: payload,
+        error: null,
       };
 
     default:
