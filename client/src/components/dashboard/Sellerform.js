@@ -6,6 +6,7 @@ function Sellerform() {
   const context = useContext(GuestContext);
   const { addGuest, editGuest, update_Guest, clearEdit } = context;
 
+  // posting rooms edit,delete,update
   useEffect(() => {
     if (editGuest !== null) {
       setguest(editGuest);

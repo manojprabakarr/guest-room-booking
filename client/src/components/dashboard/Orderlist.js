@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 
 function Orderlist({ bookings }) {
+  //getting bookings for seller
   return (
     <div className="list">
       <div className="listinfo">

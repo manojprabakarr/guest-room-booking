@@ -13,7 +13,7 @@ const Sellerlist = ({ guest }) => {
     removeGuest(_id);
     clearEdit();
   };
-
+  // posting rooms edit,delete,update
   return (
     <div className="list">
       <div className="listcontainer">
