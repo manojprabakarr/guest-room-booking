@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthState from "./context/authcontext/authState";
 import SellerAuthState from "./context/sellerauthcontext/sellerauthState";
 import GuestState from "./context/guestcontext/guestState";
+import OrderState from "./context/ordercontext/orderState";
 import AuthToken from "./utils/authtoken";
 
 //route pages
@@ -20,7 +21,6 @@ import Sellerdashboard from "./components/dashboard/sellerdashboard";
 import Authlogin from "./components/sellerauth/Authlogin";
 import Authregister from "./components/sellerauth/Authregister";
 import Searchpage from "./components/dashboard/Searchpage";
-import Order from "./components/dashboard/Order";
 import "./App.css";
 
 if (localStorage.token) {
@@ -32,35 +32,40 @@ function App() {
       <AuthState>
         <SellerAuthState>
           <GuestState>
-            <Router>
-              <div>
-                <Navbar />
-                <Switch>
-                  <PrivateRoute exact path="/" component={Userdashboard} />
+            <OrderState>
+              <Router>
+                <div>
+                  <Navbar />
+                  <Switch>
+                    <PrivateRoute exact path="/" component={Userdashboard} />
 
-                  <PrivateRoute
-                    exact
-                    path="/searchpage"
-                    component={Searchpage}
-                  />
-                  <PrivateRoute path="/order" component={Order} />
+                    <PrivateRoute
+                      exact
+                      path="/searchpage"
+                      component={Searchpage}
+                    />
 
-                  <PublicRoute
-                    exact
-                    path="/hosthome"
-                    component={Sellerdashboard}
-                  />
+                    <PublicRoute
+                      exact
+                      path="/hosthome"
+                      component={Sellerdashboard}
+                    />
 
-                  <Route exact path="/login" component={Login} />
+                    <Route exact path="/login" component={Login} />
 
-                  <Route exact path="/register" component={Register} />
+                    <Route exact path="/register" component={Register} />
 
-                  <Route exact path="/authlogin" component={Authlogin} />
+                    <Route exact path="/authlogin" component={Authlogin} />
 
-                  <Route exact path="/authregister" component={Authregister} />
-                </Switch>
-              </div>
-            </Router>
+                    <Route
+                      exact
+                      path="/authregister"
+                      component={Authregister}
+                    />
+                  </Switch>
+                </div>
+              </Router>
+            </OrderState>
           </GuestState>
         </SellerAuthState>
       </AuthState>

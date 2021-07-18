@@ -45,7 +45,7 @@ function Searchpage() {
             desc={posts.description}
             star="4.7"
             price={posts.price_perday}
-            user={posts.user}
+            sellerid={posts.user}
           />
         ))}
       </div>

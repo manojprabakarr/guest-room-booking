@@ -34,6 +34,7 @@ app.use("/userlogin", require("./routers/user/login"));
 app.use("/authregister", require("./routers/seller/authregister"));
 app.use("/authlogin", require("./routers/seller/authlogin"));
 app.use("/getall", require("./routers/seller/getallpost"));
+app.use("/order", require("./routers/seller/order"));
 
 app.use((req, res) => {
   res.status(404).json({
