@@ -11,7 +11,7 @@ router.post("/", auth, async (req, res) => {
       product: req.body.product,
       guestname: req.body.guestname,
       guestphno: req.body.guestphno,
-      noofguests: req.body.noofguests,
+
       startdate: req.body.startdate,
       enddate: req.body.enddate,
     });

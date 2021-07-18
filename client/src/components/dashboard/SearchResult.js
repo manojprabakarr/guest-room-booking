@@ -11,7 +11,6 @@ function Searchresult({ src, desc, location, title, star, sellerid, price }) {
   const { addOrder } = context;
 
   const refresh = {
-    noofguests: "",
     startdate: "",
     enddate: "",
     product: sellerid,
@@ -19,14 +18,13 @@ function Searchresult({ src, desc, location, title, star, sellerid, price }) {
     guestphno: user.phno,
   };
   const [order, setorder] = useState(refresh);
-  const { noofguests, startdate, enddate, product, guestname, guestphno } =
-    order;
+  const { startdate, enddate, product, guestname, guestphno } = order;
   const onchange = (e) => {
     setorder({ ...order, [e.target.name]: e.target.value });
   };
   const onsubmit = (e) => {
     e.preventDefault();
-    if (!(noofguests || startdate || enddate)) {
+    if (!(startdate || enddate)) {
       alert("enter all feilds");
     } else {
       addOrder(order);
@@ -57,13 +55,6 @@ function Searchresult({ src, desc, location, title, star, sellerid, price }) {
             <h2>{price}rs per day</h2>
 
             <div className="form">
-              <input
-                type="text"
-                name="noofguests"
-                value={noofguests}
-                onChange={onchange}
-                placeholder="noofguests"
-              />
               startdate:
               <input
                 type="date"
