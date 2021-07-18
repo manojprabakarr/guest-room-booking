@@ -2,7 +2,8 @@ const router = require("express").Router();
 const Rent = require("../../models/Rent");
 const sellerAuth = require("../../middleware/sellerauth");
 
-//posting using userid
+//@route /guestpost
+//@desc posting rooms
 router.post(
   "/",
 
@@ -28,7 +29,7 @@ router.post(
   }
 );
 
-//updating using userid
+// @desc updating roooms
 
 router.put("/:id", sellerAuth, async (req, res) => {
   // build Guest object
@@ -60,7 +61,7 @@ router.put("/:id", sellerAuth, async (req, res) => {
   }
 });
 
-//delete using userid
+//@desc delete rooms
 
 router.delete("/:id", sellerAuth, async (req, res) => {
   try {
@@ -78,7 +79,7 @@ router.delete("/:id", sellerAuth, async (req, res) => {
   }
 });
 
-// getting data using user_id
+// @desc get all rooms belong to the seller
 
 router.get("/", sellerAuth, async (req, res) => {
   try {

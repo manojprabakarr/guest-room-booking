@@ -5,6 +5,10 @@ const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const sellerAuth = require("../../middleware/sellerauth");
 
+//@route /authlogin
+//@desc This route is for the seller to login
+//@access public
+
 router.post(
   "/",
   [
@@ -54,7 +58,7 @@ router.post(
     }
   }
 );
-
+// @desc This route is for the seller to get login details
 router.get("/", sellerAuth, async (req, res) => {
   try {
     const user = await userrents.findById(req.user.id).select("-password");

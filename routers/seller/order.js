@@ -3,6 +3,8 @@ const Order = require("../../models/order");
 const sellerAuth = require("../../middleware/sellerauth");
 const auth = require("../../middleware/auth");
 
+//@route  /order
+//@desc post orders
 router.post("/", auth, async (req, res) => {
   try {
     order = await Order({
@@ -21,6 +23,9 @@ router.post("/", auth, async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+//@route  /order
+//@desc get all orders and show to particular seller
 
 router.get("/", sellerAuth, async (req, res) => {
   try {

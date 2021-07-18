@@ -1,6 +1,9 @@
 const router = require("express").Router();
 const Rent = require("../../models/Rent");
 
+//@route /getallpost
+//@desc Get all posts for user
+
 router.get("/", async (req, res) => {
   try {
     const users = await Rent.find({}).sort({

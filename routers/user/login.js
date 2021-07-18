@@ -10,6 +10,8 @@ const bcrypt = require("bcryptjs");
 
 const auth = require("../../middleware/auth");
 
+//@route /login
+//@desc Logs in a user
 router.post(
   "/",
   [
@@ -60,6 +62,7 @@ router.post(
   }
 );
 
+//@desc get user details
 router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");

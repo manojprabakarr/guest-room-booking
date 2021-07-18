@@ -4,6 +4,8 @@ const { check, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const userrents = require("../../models/userrent");
 
+//@route /authregister
+//desc : register a new seller
 router.post(
   "/",
   [
