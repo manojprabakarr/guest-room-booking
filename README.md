@@ -17,5 +17,7 @@ npm run dev
 ### routing
 
 /sellerlogin
-email:
-password:
+email:dummmydata@gmail.com
+password:manoj19
+
+you can also create an seller account
