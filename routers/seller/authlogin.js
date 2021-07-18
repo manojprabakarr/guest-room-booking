@@ -3,7 +3,7 @@ const userrents = require("../../models/userrent");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const sellerAuth = require("../../middleware/sellerauth");
+const sellerAuth = require("../../middleware/sellerAuth");
 
 //@route /authlogin
 //@desc This route is for the seller to login

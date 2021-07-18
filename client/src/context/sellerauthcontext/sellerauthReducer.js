@@ -7,10 +7,10 @@ import {
   SELLER_USER_LOADED,
   SELLER_AUTH_ERROR,
   SELLER_CLEAR_ERRORS,
+  SELLER_GETORDER,
 } from "../types";
 
 export default (state, { type, payload }) => {
-  console.log(type, payload);
   switch (type) {
     case SELLER_USER_LOADED:
       return {
@@ -20,6 +20,17 @@ export default (state, { type, payload }) => {
         loading: false,
         error: null,
       };
+
+    case SELLER_GETORDER:
+      return {
+        ...state,
+
+        isAuthenticated: true,
+        postorder: payload,
+        loading: false,
+        error: null,
+      };
+
     case SELLER_REGISTER_SUCCESS:
     case SELLER_LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);

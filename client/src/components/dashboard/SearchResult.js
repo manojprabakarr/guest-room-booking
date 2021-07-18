@@ -8,22 +8,18 @@ import OrderContext from "../../context/ordercontext/orderContext";
 function Searchresult({ src, desc, location, title, star, sellerid, price }) {
   const { user } = useContext(AuthContext);
   const context = useContext(OrderContext);
-  const { addOrder, getOrder, orderpost } = context;
-
-  useEffect(() => {
-    getOrder();
-  }, []);
+  const { addOrder } = context;
 
   const refresh = {
     noofguests: "",
     startdate: "",
     enddate: "",
-    productid: sellerid,
+    product: sellerid,
     guestname: user.name,
     guestphno: user.phno,
   };
   const [order, setorder] = useState(refresh);
-  const { noofguests, startdate, enddate, productid, guestname, guestphno } =
+  const { noofguests, startdate, enddate, product, guestname, guestphno } =
     order;
   const onchange = (e) => {
     setorder({ ...order, [e.target.name]: e.target.value });
@@ -74,7 +70,6 @@ function Searchresult({ src, desc, location, title, star, sellerid, price }) {
                 name="startdate"
                 value={startdate}
                 onChange={onchange}
-                min={orderpost.startdate}
               />
               enddate:
               <input
@@ -83,7 +78,6 @@ function Searchresult({ src, desc, location, title, star, sellerid, price }) {
                 value={enddate}
                 onChange={onchange}
                 placeholder="enddate"
-                min={orderpost.enddate}
               />
               <Button
                 type="submit"

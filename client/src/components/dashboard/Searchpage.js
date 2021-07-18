@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import SearchResult from "./SearchResult";
 import { Button } from "semantic-ui-react";
 import AuthContext from "../../context/authcontext/authContext";
+
 import { Link } from "react-router-dom";
 
 function Searchpage() {

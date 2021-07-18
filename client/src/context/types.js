@@ -17,6 +17,7 @@ export const SELLER_LOGOUT = "SELLER_LOGOUT";
 export const SELLER_USER_LOADED = "SELLER_USER_LOADED";
 export const SELLER_AUTH_ERROR = "SELLER_AUTH_ERROR";
 export const SELLER_CLEAR_ERRORS = "SELLER_CLEAR_ERRORS";
+export const SELLER_GETORDER = "SELLER_GETORDER";
 
 //guest context
 export const ADD_GUEST = "ADD_GUEST";
@@ -30,4 +31,5 @@ export const REMOVE_GUEST = "REMOVE_GUEST";
 //order context
 export const ADD_ORDER = "ADD_ORDER";
 export const ORDER_ERROR = "ORDER_ERROR";
-export const GET_ORDER = "GET_ORDER";
+
+//selerorde

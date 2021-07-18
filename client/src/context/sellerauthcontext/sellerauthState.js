@@ -12,6 +12,7 @@ import {
   SELLER_AUTH_ERROR,
   SELLER_LOGOUT,
   SELLER_CLEAR_ERRORS,
+  SELLER_GETORDER,
 } from "../types";
 
 const AuthState = (props) => {
@@ -21,6 +22,7 @@ const AuthState = (props) => {
     isAuthencated: null,
     loading: true,
     seller: null,
+    postorder: null,
     error: null,
   };
   const [state, dispatch] = useReducer(SellerauthReducer, intialState);
@@ -41,6 +43,21 @@ const AuthState = (props) => {
       dispatch({
         type: SELLER_AUTH_ERROR,
       });
+    }
+  };
+
+  const Orderdata = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    try {
+      const res = await axios.get("http://localhost:8000/sellerorder");
+      dispatch({
+        type: SELLER_GETORDER,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -109,11 +126,13 @@ const AuthState = (props) => {
         token: state.token,
         isAuthencated: state.isAuthencated,
         seller: state.seller,
+        postorder: state.postorder,
         error: state.error,
         loading: state.loading,
         register,
         login,
         loadUser,
+        Orderdata,
         sellerlogout,
         clearErrors,
       }}

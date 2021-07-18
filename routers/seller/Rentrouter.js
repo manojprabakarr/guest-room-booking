@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Rent = require("../../models/Rent");
-const sellerAuth = require("../../middleware/sellerauth");
+const sellerAuth = require("../../middleware/sellerAuth");
 
 //@route /guestpost
 //@desc posting rooms

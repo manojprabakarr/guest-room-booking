@@ -8,6 +8,7 @@ import OrderReducer from "./orderReducer";
 const OrderState = (props) => {
   const intialState = {
     orderpost: [],
+    sendpost: [],
 
     errors: null,
   };
@@ -37,25 +38,13 @@ const OrderState = (props) => {
     }
   };
 
-  const getOrder = async () => {
-    try {
-      const res = await axios.get("http://localhost:8000/order");
-      dispatch({
-        type: GET_ORDER,
-        payload: res.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <OrderContext.Provider
       value={{
         orderpost: state.orderpost,
+
         error: state.error,
         addOrder,
-        getOrder,
       }}
     >
       {props.children}

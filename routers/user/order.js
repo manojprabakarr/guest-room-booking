@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Order = require("../../models/order");
-const sellerAuth = require("../../middleware/sellerauth");
+
 const auth = require("../../middleware/auth");
 
 //@route  /order
@@ -8,7 +8,7 @@ const auth = require("../../middleware/auth");
 router.post("/", auth, async (req, res) => {
   try {
     order = await Order({
-      productid: req.body.productid,
+      product: req.body.product,
       guestname: req.body.guestname,
       guestphno: req.body.guestphno,
       noofguests: req.body.noofguests,
@@ -21,20 +21,6 @@ router.post("/", auth, async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(400).json(err);
-  }
-});
-
-//@route  /order
-//@desc get all orders and show to particular seller
-
-router.get("/", auth, async (req, res) => {
-  try {
-    const orders = await Order.find({});
-
-    return res.status(200).json({ orders });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Internal Server Error");
   }
 });
 
