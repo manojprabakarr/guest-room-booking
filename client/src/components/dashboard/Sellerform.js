@@ -37,7 +37,7 @@ function Sellerform() {
     setguest({ ...guest, [e.target.name]: e.target.value });
   };
 
-  const onsubmit = async (e) => {
+  const onsubmitdata = async (e) => {
     e.preventDefault();
     if (
       !(location || description || price_perday || maximum_stay || postimage)
@@ -68,7 +68,7 @@ function Sellerform() {
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <h1>Add guest</h1>
-          <Form size="large" onSubmit={onsubmit}>
+          <Form size="large" onSubmit={onsubmitdata}>
             <Segment>
               <Form.Input
                 type="text"

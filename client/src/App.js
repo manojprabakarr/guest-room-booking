@@ -10,12 +10,14 @@ import GuestState from "./context/guestcontext/guestState";
 import OrderState from "./context/ordercontext/orderState";
 import AuthToken from "./utils/authtoken";
 
+//routers
+import PrivateRoute from "./components/routing/PrivateRoute";
+import PublicRoute from "./components/routing/PublicRoute";
+
 //route pages
 import Login from "./components/userauth/login";
 import Register from "./components/userauth/register";
 import Userdashboard from "./components/dashboard/userdashboard";
-import PrivateRoute from "./components/routing/PrivateRoute";
-import PublicRoute from "./components/routing/PublicRoute";
 import Navbar from "./components/layout/Navbar";
 import Sellerdashboard from "./components/dashboard/sellerdashboard";
 import Authlogin from "./components/sellerauth/Authlogin";
